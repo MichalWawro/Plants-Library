@@ -1,16 +1,14 @@
-.main-register{
+.register-div > form{
     background-color: aliceblue;
     min-height: 30vh;
+    padding: 10px;
+    gap: 2em
 }
 
-.main-register > form, .main-register > form >div{
+.register-div > form > div{
     gap: 2em;
 }
 
 .register-label-div,.register-input-div{
     gap: 1em;
-}
-
-form{
-    padding: 10px;
 }

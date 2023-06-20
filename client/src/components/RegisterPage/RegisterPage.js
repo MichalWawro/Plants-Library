@@ -29,16 +29,13 @@ function RegisterPage() {
     }
 
     return (
-        <div className='flex-column-center-center'>
-            <header>
+        <div className='register-div flex-column-center-center'>    
                 <h1>Create new account</h1>
                 {
                     isDataCorrect
                         ? ""
                         : <h2>Input data is invalid</h2>
                 }
-            </header>
-            <main className='main-register flex-column-center-center'>
                 <form className='flex-column-center-center' onSubmit={handleSubmit}>
                     <div className='flex-row-center-center'>
                         <div className='register-label-div flex-column-center-center'>
@@ -60,7 +57,6 @@ function RegisterPage() {
                     </div>
                     <button type='submit' className='basic-button-layout'>Create Account</button>
                 </form>
-            </main>
         </div>
     )
 }
