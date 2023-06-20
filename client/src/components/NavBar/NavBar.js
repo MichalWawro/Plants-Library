@@ -4,7 +4,7 @@ import './NavBar.css';
 
 function Navbar({ PAGES, isUserLogedIn }) {
     return (
-        <>
+        <div className='navbar-div flex-row-center-center'>
             <Link to={PAGES.current.HOME}><button type='button'>Home</button></Link>
             <Link to={PAGES.current.SEARCH}><button type='button'>Search</button></Link>
             {!isUserLogedIn
@@ -19,7 +19,7 @@ function Navbar({ PAGES, isUserLogedIn }) {
                     <Link to={PAGES.current.LOGIN}><button type='button'>Register</button></Link>
                 </>
             }
-        </>
+        </div>
     )
 }
 
