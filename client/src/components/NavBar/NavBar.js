@@ -7,7 +7,7 @@ function Navbar({ PAGES, isUserLogedIn }) {
         <div className='navbar-div flex-row-center-center'>
             <Link to={PAGES.current.HOME}><button type='button'>Home</button></Link>
             <Link to={PAGES.current.SEARCH}><button type='button'>Search</button></Link>
-            {isUserLogedIn
+            {!isUserLogedIn
                 ?
                 <>
                     <Link to={PAGES.current.MYPLANTS}><button type='button'>My Plants</button></Link>
@@ -15,7 +15,7 @@ function Navbar({ PAGES, isUserLogedIn }) {
                 </>
                 :
                 <>
-                    <Link to={PAGES.current.LOGIN}><button type='button'>Sign Up</button></Link>
+                    <Link to={PAGES.current.LOGIN}><button type='button'>Sign In</button></Link>
                     <Link to={PAGES.current.REGISTER}><button type='button'>Register</button></Link>
                 </>
             }
