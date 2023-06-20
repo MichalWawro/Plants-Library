@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import './App.css';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,11 +15,13 @@ import './App.css';
 import Navbar from './components/NavBar/NavBar';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PlantPage from './components/PlantPage/PlantPage';
-
+import Searchpage from './components/Searchpage';
 
 
 function App() {
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
+
+  const [myPlants, setMyPlants] = useState([])
 
   const PAGES = useRef({
     HOME: "/home",
@@ -44,7 +47,7 @@ function App() {
           </>
         }>
           <Route path={PAGES.current.HOME} element={<h1>Test</h1>} />
-          <Route path={PAGES.current.SEARCH} element={<h1>Test3</h1>} />
+          <Route path={PAGES.current.SEARCH} element={<Searchpage setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
           <Route path={PAGES.current.MYPLANTS} element={<h2>Test2</h2>} />
           <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
           <Route path={PAGES.current.REGISTER} element={<RegisterPage/>} />
