@@ -11,18 +11,22 @@ function RegisterPage() {
 
         // sprawdzenie czy hasło jest takie samo
         // sprawdzenie czy email jest git
-        if (registerForm.password === registerForm.confirmedPassword
-            && registerForm.email.match(/^[a-z0-9]*@[a-z0-9]*[.]{1}[a-z0-9]*$/i)
-            && registerForm.password.length > 0) {
-            console.log("wykonaj");
-        }
-        else {
-            setIsDataCorrect(false);
-        }
-        
-
+        // if (registerForm.password === registerForm.confirmedPassword
+        //     && registerForm.email.match(/^[a-z0-9]*@[a-z0-9]*[.]{1}[a-z0-9]*$/i)
+        //     && registerForm.password.length > 0) {
+        //     console.log("wykonaj");
+        // }
+        // else {
+        //     setIsDataCorrect(false);
+        // }
         // sprawdzenie czy nazwa użytkownika jest wolna
         //po dodawaniu do bazy
+
+        await fetch("http://localhost:5000/api/users",{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(registerForm)
+        })
 
         setRegisterForm(Object.assign({}));
         event.target.reset();
