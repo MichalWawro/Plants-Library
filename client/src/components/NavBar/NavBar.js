@@ -15,8 +15,8 @@ function Navbar({ PAGES, isUserLogedIn }) {
                 </>
                 :
                 <>
-                    <Link to={PAGES.current.REGISTER}><button type='button'>Sign Up</button></Link>
-                    <Link to={PAGES.current.LOGIN}><button type='button'>Register</button></Link>
+                    <Link to={PAGES.current.LOGIN}><button type='button'>Sign In</button></Link>
+                    <Link to={PAGES.current.REGISTER}><button type='button'>Register</button></Link>
                 </>
             }
         </div>
