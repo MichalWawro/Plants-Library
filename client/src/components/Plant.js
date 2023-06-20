@@ -1,6 +1,6 @@
 import './Plant.css';
 
-function Plant({plant, setMyPlants}) {
+function Plant({plant, setMyPlants, myPlants}) {
 
     const handleClick = () =>{
     console.log("działa guzik")

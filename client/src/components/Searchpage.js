@@ -5,7 +5,7 @@ import Plant from './Plant';
 const key = "sk-06pe64918b89a19c41346"
 
 
-function Searchpage({setMyPlants}) {
+function Searchpage({setMyPlants, myPlants}) {
 
     const [allPlants, setAllPlants] = useState(null);
     const [foundPlants, setFoundPlants] = useState(null)
@@ -37,7 +37,7 @@ function Searchpage({setMyPlants}) {
             <div className='container-plants'>
                 {(foundPlants) && foundPlants.map((plant, index) => 
                    <div>
-                  <Plant plant={plant} setMyPlants={setMyPlants}/>
+                  <Plant plant={plant} setMyPlants={setMyPlants} myPlants={myPlants}/>
                    </div>
                    )
     

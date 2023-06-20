@@ -2,21 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function PlantDetailPage() {
-    const { plantId } = useParams();
-    const [plant, setPlant] = useState();
-
-    useEffect(()=> {
-        const fetchPlantDetails = async () => {
-            try {
-                const plantData = await getPlantDetails(plantId);
-                setPlant(plantData);
-            } catch (error) {
-                console.log('Error', error);
-            }
-        };
-
-        fetchPlantDetails();
-    }, [plantId]);
 
     return (
         <div className="plant-detail-page">
