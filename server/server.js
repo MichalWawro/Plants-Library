@@ -17,4 +17,4 @@ app.use("/api", apiRouter);
 
 app.listen(port, () => {
     console.log(`Server on: http://localhost:${port}`);
-})
+});
