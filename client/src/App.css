@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
 .flex-row-center-center, .flex-column-center-center{
@@ -11,4 +12,8 @@
 
 .flex-column-center-center{
   flex-direction: column;
+}
+
+button{
+  padding: 8px 12px;
 }
