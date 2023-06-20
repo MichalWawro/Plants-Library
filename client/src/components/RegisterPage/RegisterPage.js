@@ -58,7 +58,7 @@ function RegisterPage() {
                                 onChange={(e) => setRegisterForm(Object.assign(registerForm, { email: e.target.value }))} />
                         </div>
                     </div>
-                    <button type='submit'>Create Account</button>
+                    <button type='submit' className='basic-button-layout'>Create Account</button>
                 </form>
             </main>
         </div>

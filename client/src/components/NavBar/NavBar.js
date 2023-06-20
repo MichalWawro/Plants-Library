@@ -1,5 +1,6 @@
-import './NavBar.css';
 import { Link } from 'react-router-dom';
+
+import './NavBar.css';
 
 function Navbar({ PAGES, isUserLogedIn }) {
     return (
