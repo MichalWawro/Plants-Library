@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-row-center-center, .flex-column-center-center{
@@ -11,4 +14,8 @@
 
 .flex-column-center-center{
   flex-direction: column;
+}
+
+main{
+  flex-grow: 1;
 }
