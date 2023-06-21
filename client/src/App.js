@@ -38,7 +38,7 @@ function App() {
             <header>
               <Navbar PAGES={PAGES} isUserLogedIn={isUserLogedIn}/>
             </header>
-            <main>
+            <main className='flex-column-center-center'>
               <Outlet />
             </main>
           </>

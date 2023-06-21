@@ -51,7 +51,7 @@ function LoginForm({ setIsRegisterForm, setIsUserLogedIn }) {
                             <input type='password' id='password' className='register-input' required
                                 onChange={(e) => setLoginData(Object.assign(loginData, { password: e.target.value }))} />
                             <label htmlFor='password'>Password</label>
-                        </div>
+                        </div> 
                         <button type='submit' className='create-account-button'>Log In</button>
                     </div>
                     <button className='go-to-login-button' type='button' onClick={() => setIsRegisterForm(true)}>

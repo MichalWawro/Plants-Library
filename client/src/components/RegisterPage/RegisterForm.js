@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function RegisterForm({setIsRegisterForm}) {
+function RegisterForm({ setIsRegisterForm }) {
     const [registerForm, setRegisterForm] = useState({});
 
     const handleSubmit = async (event) => {
@@ -31,9 +31,9 @@ function RegisterForm({setIsRegisterForm}) {
     }
 
     return (
-        <>
-            <form className='flex-column-center-center' onSubmit={handleSubmit}>
-                <h1>Create new account</h1>
+        <form className='flex-column-center-center' onSubmit={handleSubmit}>
+            <h1>Create new account</h1>
+            <div className='flex-row-center-center'>
                 <div className='form-div-container flex-column-center-center'>
                     <div className='input-box flex-column-center-center'>
                         <input type='text' id='username' className='register-input' required
@@ -57,11 +57,11 @@ function RegisterForm({setIsRegisterForm}) {
                     </div>
                     <button type='submit' className='create-account-button'>Create Account</button>
                 </div>
-                <button className='go-to-login-button' type='button' onClick={() => setIsRegisterForm(false)}>
-                    You already have an account? <span className='sign-in-text'>Sign in</span>
-                </button>
-            </form>
-        </>
+            </div>
+            <button className='go-to-login-button' type='button' onClick={() => setIsRegisterForm(false)}>
+                You already have an account? <span className='sign-in-text'>Sign in</span>
+            </button>
+        </form>
     )
 }
 
