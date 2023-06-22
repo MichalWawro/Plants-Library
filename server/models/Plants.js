@@ -7,7 +7,4 @@ const plantSchema = new Schema({
   updatedAt: Date
 });
 
-const Plant = model('Plant', plantSchema);
-
-
-export default Plant;
+export const Plant = model("Plant", plantSchema);

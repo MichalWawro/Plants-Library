@@ -34,6 +34,28 @@ router.route("/users")
         }
     })
 
+router.route("/plant")
+    .post(async (req, res) => {
+        console.log(req.body)
+        try {
+            const plantInfo = req.body;
+            Profile.findOne({ userName: "123" })
+                .then(profile => {
+                    profile.plants.push(plantInfo)
+                    return profile.save();
+                })
+                .then(profile => {
+                    console.log(profile);
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+            res.send(JSON.stringify(profile));
+        } catch (error) {
+            res.status(400).json("Something went wrong");
+        }
+    })
+
 router.route("/users/login")
     .post(async (req, res) => {
         try {

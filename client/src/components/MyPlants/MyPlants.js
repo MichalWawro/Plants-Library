@@ -3,10 +3,15 @@ import React, { useState, useEffect } from 'react';
 import Plant from '../SearchPage/Plant';
 const key = "sk-06pe64918b89a19c41346"
 
-function MyPlants({ setMyPlants, myPlants }) {
+function MyPlants({ setMyPlants, myPlants, profilePlants}) {
     const [allPlants, setAllPlants] = useState(null);
     const [foundPlants, setFoundPlants] = useState([]);
-    const myPlantsArray = ['White Fir', 'Snakebark Maple', "Kelly's Gold Boxelder"];
+    // const myPlantsArray = ['White Fir', 'Snakebark Maple', "Kelly's Gold Boxelder"];
+    const [myPlantsArray, setPlantsArray] = useState([]);
+
+    useEffect(() => {
+        setPlantsArray(profilePlants);
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +43,7 @@ function MyPlants({ setMyPlants, myPlants }) {
                     <Plant key={"plant" + index} plant={plant} setMyPlants={setMyPlants} myPlants={myPlants} />
                 ))
             ) : (
-                <div>Loading...</div>
+                <div>You don't have any plants added to the library</div>
             )}
         </div>
     );

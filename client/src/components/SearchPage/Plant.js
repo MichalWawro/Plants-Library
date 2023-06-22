@@ -27,7 +27,7 @@ function Plant({ plant, setMyPlants, myPlants }) {
                     <img src={plant.default_image.thumbnail} alt="Plant" />
                     <p>{plant.common_name}</p>
                     <Link to={`/plant/${plant.id}`}><button className='button-learn_more'>Learn more</button></Link>
-                    <button className='button-addToMyPlants' onClick={() => handleAddToMyPlants(plant)}>Add plant</button>
+                    <button className='button-addToMyPlants' onClick={() => handleAddToMyPlants(plant.common_name)}>Add plant</button>
                 </>
             }
         </div>

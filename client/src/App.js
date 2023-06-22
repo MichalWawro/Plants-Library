@@ -31,7 +31,7 @@ function App() {
     REGISTER: "/register",
     PLANT: "/plant/:id"
   })
-
+//profilePlants={profileDetails[0].plants}
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -59,7 +59,11 @@ function App() {
               setMyPlants={setMyPlants}
               myPlants={myPlants} />}
           />
-          <Route path={PAGES.current.MYPLANTS} element={<MyPlants setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
+          <Route path={PAGES.current.MYPLANTS} element={typeof profileDetails[0] !== 'undefined' ? (
+          <MyPlants setMyPlants={setMyPlants} myPlants={myPlants} profilePlants={profileDetails[0].plants} />
+          ) : (
+            <div>You need to be logged in to see your plants</div>
+            )}/>
           <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
           <Route path={PAGES.current.REGISTER}
             element={
