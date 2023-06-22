@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
-function LoginForm({ setIsRegisterForm, setIsUserLogedIn }) {
+function LoginForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }) {
     const [loginData, setLoginData] = useState({
         username: "",
         password: ""
@@ -11,17 +11,17 @@ function LoginForm({ setIsRegisterForm, setIsUserLogedIn }) {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            await fetch("http://localhost:5000/api/users/login", {
+            const response = await fetch("http://localhost:5000/api/users/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(loginData)
-            }).then(
-                res => {
-                    if (res.redirected === true) {
-                        setIsUserLogedIn(true)
-                        setIsAuthenticated(true);
-                    }
-                })
+            })
+            const data = await response.json();
+            if(data.length > 0){
+                setIsUserLogedIn(true);
+                setIsAuthenticated(true);
+                setProfileDetails(data);
+            }
 
             setLoginData(Object.assign({
                 username: "",

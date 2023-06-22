@@ -6,7 +6,7 @@ import './RegisterPage.css';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 
-function RegisterPage({ setIsUserLogedIn }) {
+function RegisterPage({ setIsUserLogedIn, setProfileDetails }) {
     const [isRegisterForm, setIsRegisterForm] = useState(false);
 
     return (
@@ -15,8 +15,14 @@ function RegisterPage({ setIsUserLogedIn }) {
                 <div className='part-background'></div>
                 {
                     isRegisterForm
-                        ? <RegisterForm setIsRegisterForm={setIsRegisterForm} />
-                        : <LoginForm setIsRegisterForm={setIsRegisterForm} setIsUserLogedIn={setIsUserLogedIn} />
+                        ? <RegisterForm
+                            setIsRegisterForm={setIsRegisterForm}
+                            setIsUserLogedIn={setIsUserLogedIn}
+                            setProfileDetails={setProfileDetails} />
+                        : <LoginForm
+                            setIsRegisterForm={setIsRegisterForm}
+                            setIsUserLogedIn={setIsUserLogedIn}
+                            setProfileDetails={setProfileDetails} />
                 }
             </div>
         </div>
