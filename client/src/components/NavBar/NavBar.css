@@ -2,14 +2,16 @@
     gap: 5vw;
     justify-content: flex-start;
     padding: 1em;
-    background-color: rgb(53, 190, 115);
-    border-bottom: 3px solid rgb(16, 70, 40);
+    background-color: rgb(38, 126, 77);
+    border-bottom: 4px solid rgb(16, 70, 40);
+
 }
 
 .navbar-div button{
     color:white;
-    background-color: rgb(53, 190, 115);
+    background-color: transparent;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.7em;
+    font-weight: 700;
     cursor: pointer;
 }

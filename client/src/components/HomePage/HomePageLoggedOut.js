@@ -1,7 +1,7 @@
 function HomePageLoggedOut(){
     return(
         <>
-        <h1>Nie zalogowany</h1>
+        <h1>Not logged in</h1>
         </>
     )
 }
