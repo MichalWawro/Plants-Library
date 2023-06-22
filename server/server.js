@@ -9,8 +9,9 @@ import Plant from './models/Plants.js';
 const app = express();
 const port = 5000;
 
-mongoose.connect("mongodb+srv://1657358923:UnEN9kYdfFEVX1Xi@165735892.x9rcfss.mongodb.net/");
+mongoose.connect("mongodb+srv://c00kier:fXRTiEvwcsOUXvaD@cluster0.c98jvc7.mongodb.net/");
 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 

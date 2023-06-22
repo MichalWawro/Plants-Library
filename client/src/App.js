@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Link,
   Outlet,
   Route,
   RouterProvider
@@ -16,11 +15,13 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import PlantPage from './components/PlantPage/PlantPage';
 import SearchPage from './components/SearchPage/SearchPage';
 import MyPlants from './components/MyPlants/MyPlants';
+import HomePage from './components/HomePage/HomePage';
 
 
 function App() {
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
-  const [myPlants, setMyPlants] = useState([])
+  const [myPlants, setMyPlants] = useState([]);
+  const [profileDetails, setProfileDetails] = useState({});
 
   const PAGES = useRef({
     HOME: "/home",
@@ -28,7 +29,6 @@ function App() {
     SEARCH: "/search",
     PROFILE: "/profile",
     REGISTER: "/register",
-    LOGIN: "/login",
     PLANT: "/plant/:id"
   })
 
@@ -38,20 +38,37 @@ function App() {
         <Route path='/' element={
           <>
             <header>
-              <Navbar PAGES={PAGES} isUserLogedIn={isUserLogedIn}/>
+              <Navbar
+                PAGES={PAGES}
+                isUserLogedIn={isUserLogedIn}
+                setIsUserLogedIn={setIsUserLogedIn}
+                setProfileDetails={setProfileDetails}
+              />
             </header>
-            <main>
+            <main className='flex-column-center-center'>
               <Outlet />
             </main>
           </>
         }>
-          <Route path={PAGES.current.HOME} element={<h1>Test</h1>} />
-          <Route path={PAGES.current.SEARCH} element={<SearchPage setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
+          <Route path={PAGES.current.HOME} element={
+            <HomePage
+              isUserLogedIn={isUserLogedIn}
+          />} />
+          <Route path={PAGES.current.SEARCH} element={
+            <SearchPage
+              setMyPlants={setMyPlants}
+              myPlants={myPlants} />}
+          />
           <Route path={PAGES.current.MYPLANTS} element={<MyPlants setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
           <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
-          <Route path={PAGES.current.REGISTER} element={<RegisterPage PAGES={PAGES}/>} />
-          <Route path={PAGES.current.LOGIN} element={<h2>Test4</h2>} />
-          <Route path={PAGES.current.PLANT} element={<PlantPage/>}/>
+          <Route path={PAGES.current.REGISTER}
+            element={
+              <RegisterPage
+                PAGES={PAGES}
+                setIsUserLogedIn={setIsUserLogedIn}
+                setProfileDetails={setProfileDetails}
+              />} />
+          <Route path={PAGES.current.PLANT} element={<PlantPage />} />
 
           <Route path="*" element={<h1>Page not found</h1>} />
         </Route>
