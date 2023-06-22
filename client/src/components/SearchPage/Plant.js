@@ -3,9 +3,22 @@ import { Link } from 'react-router-dom';
 
 function Plant({ plant, setMyPlants, myPlants }) {
 
-    const handleAddToMyPlants = (plant) => {
-        setMyPlants([...plant, plant])
-    }
+    // const handleAddToMyPlants = (plant) => {
+    //     setMyPlants([...plant, plant])
+    // }
+
+    function handleAddToMyPlants(plant) {
+        console.log(plant);
+        const data = plant;
+        fetch('http://localhost:5000/plant', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .catch(error => {
+            console.error(error);
+          });
+      }
 
     return (
         <div className='plant-small'>

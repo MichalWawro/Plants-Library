@@ -15,6 +15,7 @@ import Navbar from './components/NavBar/NavBar';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PlantPage from './components/PlantPage/PlantPage';
 import SearchPage from './components/SearchPage/SearchPage';
+import MyPlants from './components/MyPlants/MyPlants';
 
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
         }>
           <Route path={PAGES.current.HOME} element={<h1>Test</h1>} />
           <Route path={PAGES.current.SEARCH} element={<SearchPage setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
-          <Route path={PAGES.current.MYPLANTS} element={<h2>Test2</h2>} />
+          <Route path={PAGES.current.MYPLANTS} element={<MyPlants setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
           <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
           <Route path={PAGES.current.REGISTER} element={<RegisterPage PAGES={PAGES}/>} />
           <Route path={PAGES.current.LOGIN} element={<h2>Test4</h2>} />
