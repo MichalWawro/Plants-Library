@@ -52,14 +52,20 @@ function App() {
           <Route path={PAGES.current.HOME} element={
             <HomePage
               isUserLogedIn={isUserLogedIn}
-          />} />
+              profileDetails={profileDetails}
+              PAGES={PAGES}
+            />} />
           <Route path={PAGES.current.SEARCH} element={
             <SearchPage
               setMyPlants={setMyPlants}
               myPlants={myPlants} />}
           />
-          <Route path={PAGES.current.MYPLANTS} element={<h2>Test2</h2>} />
-          <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
+          {isUserLogedIn &&
+            <>
+              <Route path={PAGES.current.MYPLANTS} element={<h2>Test2</h2>} />
+              <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
+            </>
+          }
           <Route path={PAGES.current.REGISTER}
             element={
               <RegisterPage
