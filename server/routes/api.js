@@ -7,11 +7,6 @@ import { Profile } from "../models/Profile.js";
 
 const router = express.Router();
 
-router.route("/myplants")
-    .get((req, res) => {
-        res.status(200).json("Działa");
-    })
-
 router.route("/users")
     .post(async (req, res) => {
         try {
@@ -28,7 +23,7 @@ router.route("/users")
                 plants: [],
                 achivements: []
             })
-            res.send(JSON.stringify(profile));
+            res.send(JSON.stringify([profile]));
         } catch (error) {
             res.status(400).json("Something went wrong... Try Again");
         }
@@ -65,7 +60,7 @@ router.route("/users/login")
                 return res.status(400).json("Cannot find user");
             }
             if (await bcrypt.compare(req.body.password, user.password)) {
-                const profile = await Profile.find({userId : user._id});
+                const profile = await Profile.find({ userId: user._id });
                 res.send(JSON.stringify(profile));
             } else {
                 return res.status(400).json("Not Allowed")
@@ -73,6 +68,29 @@ router.route("/users/login")
 
         } catch (error) {
             res.status(400).json("Something went wrong... Try Again");
+        }
+    })
+
+router.route("/plant")
+    .post(async (req, res) => {
+        const profile = await Profile.find({ userId: req.body.userId });
+        if (!profile[0].plantsIds.includes(req.body.plantId)) {
+            profile[0].plantsIds.push(req.body.plantId);
+            profile[0].plants.push(req.body.plant);
+            profile[0].save();
+            return res.status(201);
+        } else {
+            res.status(400).json("Something went wrong...")
+        }
+    })
+
+router.route("/profile")
+    .post(async (req, res) => {
+        try {
+            const profile = await Profile.find(req.body);
+            res.status(200).send(JSON.stringify(profile));
+        } catch (error) {
+            res.status(400).json("Something went wrong...");
         }
     })
 

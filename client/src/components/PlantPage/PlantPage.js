@@ -22,7 +22,7 @@ function PlantPage() {
             {plant &&
                 <>
                     <h1>{plant.common_name}</h1>
-                    <img src={plant.default_image} alt="Plant" />
+                    <img src={plant.default_image.thumbnail} alt="Plant" />
                     <p>Scientific Name: {plant.scientific_name}</p>
                     <p>Watering: {plant.watering}</p>
                     <p>Sunlight: {plant.sunlight}</p>

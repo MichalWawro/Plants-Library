@@ -1,37 +1,32 @@
 import './Plant.css';
 import { Link } from 'react-router-dom';
 
-function Plant({ plant, setMyPlants, myPlants }) {
+function Plant({ plant, profileDetails }) {
 
-    // const handleAddToMyPlants = (plant) => {
-    //     setMyPlants([...plant, plant])
-    // }
+  const handleAddToMyPlants = async () => {
+    await fetch("http://localhost:5000/api/plant", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: profileDetails[0].userId,
+        plantId: plant.id,
+        plant: plant
+      })
+    })
+  }
 
-    function handleAddToMyPlants(plant) {
-        console.log(plant);
-        const data = plant;
-        fetch('http://localhost:5000/plant', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        })
-          .catch(error => {
-            console.error(error);
-          });
+  return (
+    <div className='plant-small'>
+      {plant &&
+        <>
+          <img src={plant.default_image.thumbnail} alt="Plant" />
+          <p>{plant.common_name}</p>
+          <Link to={`/plant/${plant.id}`}><button className='button-learn_more'>Learn more</button></Link>
+          <button className='button-addToMyPlants' onClick={handleAddToMyPlants}>Add plant</button>
+        </>
       }
-
-    return (
-        <div className='plant-small'>
-            {plant &&
-                <>
-                    <img src={plant.default_image.thumbnail} alt="Plant" />
-                    <p>{plant.common_name}</p>
-                    <Link to={`/plant/${plant.id}`}><button className='button-learn_more'>Learn more</button></Link>
-                    <button className='button-addToMyPlants' onClick={() => handleAddToMyPlants(plant.common_name)}>Add plant</button>
-                </>
-            }
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Plant;
