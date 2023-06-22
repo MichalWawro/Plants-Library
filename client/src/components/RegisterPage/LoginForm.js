@@ -17,10 +17,12 @@ function LoginForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }) {
                 body: JSON.stringify(loginData)
             })
             const data = await response.json();
-            if(data.length > 0){
+            if(Array.isArray(data) && data.length > 0){
                 setIsUserLogedIn(true);
                 setIsAuthenticated(true);
                 setProfileDetails(data);
+            }else{
+                //Komunikat dla użytkownika o błędzie
             }
 
             setLoginData(Object.assign({

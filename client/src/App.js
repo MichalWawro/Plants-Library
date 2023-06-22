@@ -14,6 +14,7 @@ import Navbar from './components/NavBar/NavBar';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PlantPage from './components/PlantPage/PlantPage';
 import SearchPage from './components/SearchPage/SearchPage';
+import HomePage from './components/HomePage/HomePage';
 
 
 function App() {
@@ -48,7 +49,10 @@ function App() {
             </main>
           </>
         }>
-          <Route path={PAGES.current.HOME} element={<h1>Test</h1>} />
+          <Route path={PAGES.current.HOME} element={
+            <HomePage
+              isUserLogedIn={isUserLogedIn}
+          />} />
           <Route path={PAGES.current.SEARCH} element={
             <SearchPage
               setMyPlants={setMyPlants}
