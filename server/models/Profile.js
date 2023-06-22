@@ -3,6 +3,7 @@ const {Schema, model} = mongoose;
 
 const profileSchema = new Schema({
     userId: String,
+    userName: String,
     plants: Array,
     achivements: Array
 })

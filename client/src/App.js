@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Link,
   Outlet,
   Route,
   RouterProvider
@@ -19,7 +18,8 @@ import SearchPage from './components/SearchPage/SearchPage';
 
 function App() {
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
-  const [myPlants, setMyPlants] = useState([])
+  const [myPlants, setMyPlants] = useState([]);
+  const [profileDetails, setProfileDetails] = useState({});
 
   const PAGES = useRef({
     HOME: "/home",
@@ -36,7 +36,12 @@ function App() {
         <Route path='/' element={
           <>
             <header>
-              <Navbar PAGES={PAGES} isUserLogedIn={isUserLogedIn}/>
+              <Navbar
+                PAGES={PAGES}
+                isUserLogedIn={isUserLogedIn}
+                setIsUserLogedIn={setIsUserLogedIn}
+                setProfileDetails={setProfileDetails}
+              />
             </header>
             <main className='flex-column-center-center'>
               <Outlet />
@@ -44,11 +49,21 @@ function App() {
           </>
         }>
           <Route path={PAGES.current.HOME} element={<h1>Test</h1>} />
-          <Route path={PAGES.current.SEARCH} element={<SearchPage setMyPlants={setMyPlants} myPlants={myPlants}/>}/>
+          <Route path={PAGES.current.SEARCH} element={
+            <SearchPage
+              setMyPlants={setMyPlants}
+              myPlants={myPlants} />}
+          />
           <Route path={PAGES.current.MYPLANTS} element={<h2>Test2</h2>} />
           <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
-          <Route path={PAGES.current.REGISTER} element={<RegisterPage PAGES={PAGES} setIsUserLogedIn={setIsUserLogedIn}/>} />
-          <Route path={PAGES.current.PLANT} element={<PlantPage/>}/>
+          <Route path={PAGES.current.REGISTER}
+            element={
+              <RegisterPage
+                PAGES={PAGES}
+                setIsUserLogedIn={setIsUserLogedIn}
+                setProfileDetails={setProfileDetails}
+              />} />
+          <Route path={PAGES.current.PLANT} element={<PlantPage />} />
 
           <Route path="*" element={<h1>Page not found</h1>} />
         </Route>

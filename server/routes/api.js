@@ -22,12 +22,13 @@ router.route("/users")
                 password: hashedPassword,
                 email: req.body.email
             })
-            await Profile.create({
+            const profile = await Profile.create({
                 userId: user._id,
+                userName: user.userName,
                 plants: [],
                 achivements: []
             })
-            res.status(201).json("Created");
+            res.send(JSON.stringify(profile));
         } catch (error) {
             res.status(400).json("Something went wrong... Try Again");
         }
@@ -42,7 +43,8 @@ router.route("/users/login")
                 return res.status(400).json("Cannot find user");
             }
             if (await bcrypt.compare(req.body.password, user.password)) {
-                res.redirect(301, "http://localhost:3000/home");
+                const profile = await Profile.find({userId : user._id});
+                res.send(JSON.stringify(profile));
             } else {
                 return res.status(400).json("Not Allowed")
             }
