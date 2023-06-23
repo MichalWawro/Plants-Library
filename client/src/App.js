@@ -14,7 +14,6 @@ import Navbar from './components/NavBar/NavBar';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PlantPage from './components/PlantPage/PlantPage';
 import SearchPage from './components/SearchPage/SearchPage';
-import MyPlants from './components/MyPlants/MyPlants';
 import HomePage from './components/HomePage/HomePage';
 import MyPlantsPage from './components/MyPlantsPage/MyPlantsPage';
 
@@ -31,7 +30,7 @@ function App() {
     REGISTER: "/register",
     PLANT: "/plant/:id"
   })
-  //profilePlants={profileDetails[0].plants}
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>

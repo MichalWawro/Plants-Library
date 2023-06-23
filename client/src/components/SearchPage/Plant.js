@@ -5,7 +5,7 @@ function Plant({ plant, profileDetails }) {
 
   const handleAddToMyPlants = async () => {
     await fetch("http://localhost:5000/api/plant", {
-      method: "POST",
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         userId: profileDetails[0].userId,
