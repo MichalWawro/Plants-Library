@@ -1,7 +1,7 @@
 import './SearchPage.css';
 import React, { useState, useEffect } from 'react';
 import Plant from './Plant';
-const key = "sk-06pe64918b89a19c41346"
+const key = "sk-hzSZ64901d28d747a1330"
 
 
 function Searchpage({profileDetails}) {
