@@ -30,7 +30,6 @@ function App() {
           <>
             <header>
               <Navbar
-                PAGES={PAGES}
                 isUserLogedIn={isUserLogedIn}
                 setIsUserLogedIn={setIsUserLogedIn}
                 setProfileDetails={setProfileDetails}
@@ -45,7 +44,6 @@ function App() {
             <HomePage
               isUserLogedIn={isUserLogedIn}
               profileDetails={profileDetails}
-              PAGES={PAGES}
             />} />
 
           {isUserLogedIn &&
@@ -66,7 +64,6 @@ function App() {
           <Route path={PAGES.REGISTER}
             element={
               <RegisterPage
-                PAGES={PAGES}
                 setIsUserLogedIn={setIsUserLogedIn}
                 setProfileDetails={setProfileDetails}
               />} />
