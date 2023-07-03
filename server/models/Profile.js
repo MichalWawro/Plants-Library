@@ -9,4 +9,5 @@ const profileSchema = new Schema({
     achivements: Array
 })
 
-export const Profile = model("Profile", profileSchema);
+const Profile = model("Profile", profileSchema);
+export default Profile;

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
+import PAGES from './constants/enums';
 
 //components
 import Navbar from './components/NavBar/NavBar';
@@ -22,15 +23,6 @@ function App() {
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
   const [profileDetails, setProfileDetails] = useState({});
 
-  const PAGES = useRef({
-    HOME: "/home",
-    MYPLANTS: "/myplants",
-    SEARCH: "/search",
-    PROFILE: "/profile",
-    REGISTER: "/register",
-    PLANT: "/plant/:id"
-  })
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -38,7 +30,6 @@ function App() {
           <>
             <header>
               <Navbar
-                PAGES={PAGES}
                 isUserLogedIn={isUserLogedIn}
                 setIsUserLogedIn={setIsUserLogedIn}
                 setProfileDetails={setProfileDetails}
@@ -49,32 +40,30 @@ function App() {
             </main>
           </>
         }>
-          <Route path={PAGES.current.HOME} element={
+          <Route path={PAGES.HOME} element={
             <HomePage
               isUserLogedIn={isUserLogedIn}
               profileDetails={profileDetails}
-              PAGES={PAGES}
             />} />
 
           {isUserLogedIn &&
             <>
-              <Route path={PAGES.current.SEARCH} element={
+              <Route path={PAGES.SEARCH} element={
                 <SearchPage profileDetails={profileDetails} />}
               />
-              <Route path={PAGES.current.MYPLANTS} element={
+              <Route path={PAGES.MYPLANTS} element={
                 <MyPlantsPage
                   setProfileDetails={setProfileDetails}
                   profileDetails={profileDetails} />}
               />
-              <Route path={PAGES.current.PROFILE} element={<h2>Test4</h2>} />
-              <Route path={PAGES.current.PLANT} element={<PlantPage />} />
+              <Route path={PAGES.PROFILE} element={<h2>Test4</h2>} />
+              <Route path={PAGES.PLANT} element={<PlantPage />} />
             </>
             
           }
-          <Route path={PAGES.current.REGISTER}
+          <Route path={PAGES.REGISTER}
             element={
               <RegisterPage
-                PAGES={PAGES}
                 setIsUserLogedIn={setIsUserLogedIn}
                 setProfileDetails={setProfileDetails}
               />} />

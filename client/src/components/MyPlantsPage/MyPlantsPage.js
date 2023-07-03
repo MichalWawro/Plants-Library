@@ -4,15 +4,14 @@ import "./MyPlantsPage.css"
 function MyPlantsPage({ profileDetails, setProfileDetails }) {
 
     useEffect(() => {
-        (async () => {
-            const response = await fetch("http://localhost:5000/api/profile", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ userId: profileDetails[0].userId })
-            })
-            const data = await response.json();
-            setProfileDetails(data);
-        })();
+        fetch("http://localhost:5000/api/profile", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: profileDetails[0].userId })
+        })
+        .then(response => response.json())
+        .then(data => setProfileDetails(data))
+        .catch(error => console.error(error));
     }, [])
 
     return (

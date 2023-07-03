@@ -1,34 +1,36 @@
 import './NavBar.css';
+import PAGES from '../../constants/enums';
 
 import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function Navbar(props) {
+    const {setProfileDetails, setIsUserLogedIn, isUserLogedIn} = props;
     const [isSignOut, setIsSignOut] = useState(false);
 
     const handleSignOut = () => {
-        props.setProfileDetails({});
-        props.setIsUserLogedIn(false);
+        setProfileDetails({});
+        setIsUserLogedIn(false);
     }
 
     return (
         <>
             {isSignOut
-                ? <Navigate replace to={props.PAGES.current.HOME} />
+                ? <Navigate replace to={PAGES.HOME} />
                 : <div className='navbar-div flex-row-center-center'>
-                    <Link to={props.PAGES.current.HOME}><button type='button'>Home</button></Link>
+                    <Link to={PAGES.HOME}><button type='button'>Home</button></Link>
 
-                    {props.isUserLogedIn
+                    {isUserLogedIn
                         ?
                         <>
-                            <Link to={props.PAGES.current.SEARCH}><button type='button'>Search</button></Link>
-                            <Link to={props.PAGES.current.MYPLANTS}><button type='button'>My Plants</button></Link>
-                            <Link to={props.PAGES.current.PROFILE}><button type='button'>Profile</button></Link>
+                            <Link to={PAGES.SEARCH}><button type='button'>Search</button></Link>
+                            <Link to={PAGES.MYPLANTS}><button type='button'>My Plants</button></Link>
+                            <Link to={PAGES.PROFILE}><button type='button'>Profile</button></Link>
                             <button type='button' onClick={handleSignOut}>Sign out</button>
                         </>
                         :
                         <>
-                            <Link to={props.PAGES.current.REGISTER}><button type='button'>Sign In/Register</button></Link>
+                            <Link to={PAGES.REGISTER}><button type='button'>Sign In/Register</button></Link>
                         </>
                     }
                 </div>}

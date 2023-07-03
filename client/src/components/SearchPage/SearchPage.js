@@ -1,8 +1,8 @@
-import './SearchPage.css';
 import React, { useState, useEffect } from 'react';
-import Plant from './Plant';
-const key = "sk-hzSZ64901d28d747a1330"
 
+import './SearchPage.css';
+import PERENUAL_API_KEY from '../../constants/apiKeys';
+import Plant from './Plant';
 
 function Searchpage({profileDetails}) {
 
@@ -11,14 +11,15 @@ function Searchpage({profileDetails}) {
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(`https://perenual.com/api/species-list?page=15&key=${key}`);
-            const data = await response.json();
-            setAllPlants(data);
-        };
-
-        fetchData()
-        
+        try {
+            (async () => {
+                const response = await fetch(`https://perenual.com/api/species-list?page=1&key=${PERENUAL_API_KEY}`);
+                const data = await response.json();
+                setAllPlants(data);
+            })();
+        } catch (error) {
+            console.error(`Error fetching data:${error}`)
+        }
     }, []);
 
 

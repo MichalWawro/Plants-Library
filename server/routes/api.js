@@ -2,8 +2,8 @@ import express from "express";
 import bcrypt from 'bcrypt';
 
 //models
-import { User } from "../models/User.js";
-import { Profile } from "../models/Profile.js";
+import User from "../models/User.js";
+import Profile from "../models/Profile.js";
 
 const router = express.Router();
 
@@ -51,14 +51,18 @@ router.route("/users/login")
 
 router.route("/plant")
     .patch(async (req, res) => {
-        const profile = await Profile.find({ userId: req.body.userId });
-        if (!profile[0].plantsIds.includes(req.body.plantId)) {
-            profile[0].plantsIds.push(req.body.plantId);
-            profile[0].plants.push(req.body.plant);
-            profile[0].save();
-            return res.status(204);
-        } else {
-            res.status(400).json("Something went wrong...")
+        try {
+            const profile = await Profile.find({ userId: req.body.userId });
+            if (!profile[0].plantsIds.includes(req.body.plantId)) {
+                profile[0].plantsIds.push(req.body.plantId);
+                profile[0].plants.push(req.body.plant);
+                profile[0].save();
+                return res.status(204);
+            } else {
+                res.status(400).json("Plant already added...");
+            }
+        } catch (error) {
+            res.status(400).json("Something went wrong...");
         }
     })
 

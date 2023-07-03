@@ -2,18 +2,17 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import "./PlantPage.css";
+import PERENUAL_API_KEY from "../../constants/apiKeys";
 
 function PlantPage() {
     const { id } = useParams();
     const [plant, setPlant] = useState();
 
     useEffect(() => {
-        const getPlantData = async () => {
-            const response = await fetch(`https://perenual.com/api/species/details/${id}?key=sk-hzSZ64901d28d747a1330`);
-            const data = await response.json();
-            setPlant(data);
-        }
-        getPlantData();
+        fetch(`https://perenual.com/api/species/details/${id}?key=${PERENUAL_API_KEY}`)
+        .then(response => response.json())
+        .then(data => setPlant(data))
+        .catch(error => console.error(error));
     }, [])
 
 

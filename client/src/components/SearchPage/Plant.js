@@ -1,10 +1,11 @@
-import './Plant.css';
 import { Link } from 'react-router-dom';
+
+import './Plant.css';
 
 function Plant({ plant, profileDetails }) {
 
   const handleAddToMyPlants = async () => {
-    await fetch("http://localhost:5000/api/plant", {
+    fetch("http://localhost:5000/api/plant", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -13,6 +14,7 @@ function Plant({ plant, profileDetails }) {
         plant: plant
       })
     })
+    .catch(error => console.error(error));
   }
 
   return (
