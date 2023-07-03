@@ -34,7 +34,7 @@ function RegisterForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }
                 setRedirect(true);
             }
 
-            setRegisterForm(Object.assign({}));
+            setRegisterForm({});
             event.target.reset();
         } catch (error) {
             console.error(error);
