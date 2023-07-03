@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-center-center, .flex-column-center-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex-column-center-center{
+  flex-direction: column;
+}
+
+main{
+  background-image: url(./assets/background.png);
+  background-size: cover;
+  flex-grow: 1;
+}
