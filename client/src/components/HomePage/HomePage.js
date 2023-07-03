@@ -4,11 +4,11 @@ import './HomePage.css';
 import HomePageLoggedIn from './HomePageLoggedIn';
 import HomePageLoggedOut from './HomePageLoggedOut';
 
-function HomePage({isUserLogedIn, profileDetails, PAGES }) {
+function HomePage({isUserLogedIn, profileDetails}) {
     return(
         <>
             {isUserLogedIn 
-            ? <HomePageLoggedIn profileDetails={profileDetails} PAGES={PAGES}/>
+            ? <HomePageLoggedIn profileDetails={profileDetails}/>
             : <HomePageLoggedOut/>
             }
         </>

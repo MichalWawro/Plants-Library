@@ -54,7 +54,7 @@
     padding: 20px 10px;
     background-color: rgba(0, 0, 0, 0.377);
     border-radius: 15px;
-    gap: 2.2em;
+    gap: 1.4em;
     border: 3px solid rgba(0, 0, 0, 0.356);
 }
 
@@ -100,4 +100,24 @@
     padding: 10px;
     border-radius: 15px;
     box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.411);
+}
+
+.valid{
+    color: green;
+    max-width: 14em;
+    word-wrap: break-word;
+}
+
+.invalid{
+    max-width: 14em;
+    color: crimson;
+    word-wrap: break-word;
+}
+
+.register-form{
+    margin: 10px;
+}
+
+.register-form h1, .register-form h3{
+    margin: 0px;
 }
