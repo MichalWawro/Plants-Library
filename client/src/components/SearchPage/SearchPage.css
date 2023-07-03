@@ -1,8 +1,31 @@
-.container-plants{
-    display: flex;
+.container-plants {
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
 	align-items: center;
 	align-content: center;
+}
+
+.search-input {
+	font-size: 24px;
+	font-weight: 600;
+	padding: 0px 12px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.699);
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.411);
+	border: 3px solid black;
+}
+
+.flex-column-center-center {
+	padding: 20px !important;
+	justify-content: flex-start !important
+}
+
+.plant-card {
+	object-fit: contain;
+	min-width: 10vw;
+	height: 20vh;
+	border-radius: 15px;
+	box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.411);
 }

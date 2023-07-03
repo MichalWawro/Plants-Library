@@ -12,12 +12,13 @@ function Searchpage({profileDetails}) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`https://perenual.com/api/species-list?page=1&key=${key}`);
+            const response = await fetch(`https://perenual.com/api/species-list?page=15&key=${key}`);
             const data = await response.json();
             setAllPlants(data);
         };
 
-        fetchData().catch(error => console.error(`Error fetching data:${error}`));
+        fetchData()
+        
     }, []);
 
 
@@ -31,12 +32,13 @@ function Searchpage({profileDetails}) {
     return (
         <div>
             <form>
-                {allPlants && <input placeholder="Choose a plant..." onChange={handleChange}></input>}
+                {allPlants && <input className="search-input" placeholder="Search a plant..." onChange={handleChange}></input>}
             </form>
             <div className='container-plants'>
-                {foundPlants &&
-                    foundPlants.map((plant, index) =>
-                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails}/>)
+                {foundPlants? 
+                   (foundPlants.map((plant, index) =>
+                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails}/>)) : ((allPlants)&& allPlants.data.map((plant, index) =>
+                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails} />))
                 }
             </div>
         </div>
