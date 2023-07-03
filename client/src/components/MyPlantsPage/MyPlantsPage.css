@@ -1,3 +1,29 @@
 .fav-container{
     gap: 3.5em;
+    flex-wrap: wrap;
+}
+
+.manage-icons{
+    padding: 5px;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.watering-icon{
+    background-color: lightblue;
+}
+
+.star-on{
+    background-color: lemonchiffon;
+}
+
+.star-off{
+    background-color: lightgrey;
+}
+
+.manage-bar{
+    gap: 0.5em;
 }
