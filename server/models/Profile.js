@@ -6,7 +6,7 @@ const profileSchema = new Schema({
     userName: String,
     plantsIds: Array,
     plants: Array,
-    achivements: Array
+    achivements: Array,
 })
 
 const Profile = model("Profile", profileSchema);
