@@ -51,6 +51,7 @@ router.route("/users/login")
 
 router.route("/plant")
     .patch(async (req, res) => {
+        console.log(req.body)
         try {
             const profile = await Profile.find({ userId: req.body.userId });
             if (!profile[0].plantsIds.includes(req.body.plantId)) {
