@@ -13,7 +13,7 @@ function Searchpage({profileDetails}) {
     useEffect(() => {
         try {
             (async () => {
-                const response = await fetch(`https://perenual.com/api/species-list?page=1&key=${PERENUAL_API_KEY}`);
+                const response = await fetch(`https://perenual.com/api/species-list?page=1&key=${PERENUAL_API_KEY}&indoor=1`);
                 const data = await response.json();
                 setAllPlants(data);
             })();
