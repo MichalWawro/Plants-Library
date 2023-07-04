@@ -64,6 +64,20 @@ router.route("/plant")
         } catch (error) {
             res.status(400).json("Something went wrong...");
         }
+    })    
+    .delete(async (req, res) => {
+        try {
+            const {plant, userID} = req.body;
+            const profile = await Profile.find({ userId: userID });
+            const indexID = profile[0].plantsIds.findIndex(element => element === plant.id);
+            const indexObject = profile[0].plants.findIndex(element => element.id === plant.id);
+            profile[0].plantsIds.splice(indexID, 1);
+            profile[0].plants.splice(indexObject, 1);
+            profile[0].save();
+            res.status(204).json("Removed");
+        } catch (error) {
+            res.status(400).json("Something went wrong...");
+        }
     })
 
 router.route("/profile")
@@ -75,5 +89,6 @@ router.route("/profile")
             res.status(400).json("Something went wrong...");
         }
     })
+
 
 export { router };
