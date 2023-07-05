@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import "./PlantPage.css";
 import PERENUAL_API_KEY from "../../constants/apiKeys";
 
-function PlantPage() {
+function PlantPage({userId}) {
     const { id } = useParams();
     const [plant, setPlant] = useState();
-
+    console.log(userId);
     useEffect(() => {
         fetch(`https://perenual.com/api/species/details/${id}?key=${PERENUAL_API_KEY}`)
         .then(response => response.json())
@@ -15,6 +15,18 @@ function PlantPage() {
         .catch(error => console.error(error));
     }, [])
 
+    const handleAddToMyPlants = async () => {
+        fetch("http://localhost:5000/api/plant", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId: userId,
+            plantId: plant.id,
+            plant: plant
+          })
+        })
+        .catch(error => console.error(error));
+      }    
 
     return (
         <div className="plant-detail-page">
@@ -26,7 +38,7 @@ function PlantPage() {
                     <p>Watering: {plant.watering}</p>
                     <p>Sunlight: {plant.sunlight}</p>
                     <p>Cycle: {plant.cycle}</p>
-                    <button>Add to My Plants</button>
+                    <button onClick={handleAddToMyPlants}>Add plant</button>
                 </>
             }
         </div>

@@ -57,7 +57,7 @@ function App() {
                   profileDetails={profileDetails} />}
               />
               <Route path={PAGES.PROFILE} element={<h2>Test4</h2>} />
-              <Route path={PAGES.PLANT} element={<PlantPage />} />
+              <Route path={PAGES.PLANT} element={<PlantPage userId={profileDetails[0].userId}/>} />
             </>
             
           }

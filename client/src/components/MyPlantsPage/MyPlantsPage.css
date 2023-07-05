@@ -1,3 +1,73 @@
 .fav-container{
     gap: 3.5em;
+    flex-wrap: wrap;
 }
+
+.manage-icons{
+    padding: 5px;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.watering-icon{
+    background-color: lightblue;
+}
+
+.watering-icon:active{
+    transform: scale(0.9);
+}
+
+.star-on{
+    background-color: lemonchiffon;
+}
+
+.star-off{
+    background-color: lightgrey;
+    transform: scale(0.9);
+}
+
+.manage-bar{
+    gap: 0.5em;
+}
+
+.watering-div{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.397);
+    z-index: 100;
+}
+
+.watering-form{
+    background-color: white;
+    padding: 1em;
+    max-width: 20vw;
+    width: 14vw;
+    gap: 1em;
+    border-radius: 10px;
+}
+
+.confirm-watering-button, .discard-watering-button{
+    background-color: rgb(42, 168, 16);
+    color: white;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+  
+  .discard-watering-button{
+    background-color: rgb(220, 20, 20);
+    color: black;
+  }
+  
+.watering-select{
+    padding: 0.5em 1em;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 3px solid black;
+}
+
