@@ -38,8 +38,10 @@ function Searchpage({profileDetails}) {
             <div className='container-plants'>
                 {foundPlants? 
                    (foundPlants.map((plant, index) =>
-                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails}/>)) : ((allPlants)&& allPlants.data.map((plant, index) =>
-                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails} />))
+                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails}/>)) : (
+                            (allPlants)&& allPlants.data.map((plant, index) =>
+                        <Plant key={"plant" + index} plant={plant} profileDetails={profileDetails} />)
+                        )
                 }
             </div>
         </div>
