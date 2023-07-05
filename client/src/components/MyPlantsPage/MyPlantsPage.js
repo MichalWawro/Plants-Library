@@ -26,7 +26,7 @@ function MyPlantsPage({ profileDetails, setProfileDetails }) {
                 userId={profileDetails[0].userId}
                 editedPlant={editedPlant}
                 setEditedPlant={setEditedPlant} />}
-            <h1>My Plants</h1>
+            <p className="fav-plants-header">My Plants</p>
             <div className="fav-container flex-row-center-center">
 
                 {profileDetails && profileDetails[0].plants.map((element, index) =>

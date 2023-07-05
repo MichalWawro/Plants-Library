@@ -86,8 +86,9 @@ router.route("/plant/watering")
         const {userId, editedPlant, wateringFrequency} = req.body;
         const profile = await Profile.find({userId});
         const plantIndex = profile[0].plants.findIndex(element => element.id === editedPlant.id);
-        profile[0].plants[plantIndex].wateringFrquency = wateringFrequency;
+        profile[0].plants[plantIndex].wateringFrequency = wateringFrequency;
         profile[0].plants[plantIndex].lastWatering = Date.now();
+        profile[0].markModified("plants");
         await profile[0].save();
         res.status(200).json("Updated");
     } catch (error) {

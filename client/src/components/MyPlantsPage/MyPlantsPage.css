@@ -71,3 +71,45 @@
     border: 3px solid black;
 }
 
+.late{
+    color: red;
+}
+
+.notlate{
+    color: rgb(0, 170, 0);
+}
+
+.timer{
+    font-size: 1.4em;
+    background-color: gainsboro;
+    line-height: 0px;
+    padding: 0.2em 0.5em;
+    gap: 0.2em;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.fav-main-plant{
+    border-radius: 50%;
+    border: 0.4em solid rgb(255, 174, 0);
+}
+
+.fav-plant-div{
+    color: rgb(0, 68, 255);
+    background-color: rgba(255, 255, 255, 0.308);
+    padding: 2em 1em;
+    border: 3px solid white;
+}
+
+.watered-icon{
+    border: 3px solid black;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+}
+
+.fav-plants-header{
+    font-size: 3em;
+    font-weight: 700;
+    color:white;
+}
