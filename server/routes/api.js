@@ -96,6 +96,21 @@ router.route("/plant/watering")
     }
 })
 
+router.route("/plant/watering/new")
+.patch(async (req,res) =>{
+    try {
+        const {userID, plantId} = req.body;
+        const profile = await Profile.find({userId: userID});
+        const plantIndex = profile[0].plants.findIndex(element => element.id === plantId);
+        profile[0].plants[plantIndex].lastWatering = Date.now();
+        profile[0].markModified("plants");
+        await profile[0].save();
+        res.status(200).json("Updated");
+    } catch (error) {
+        res.status(400).json("Something went wrong...");
+    }
+})
+
 router.route("/profile")
     .post(async (req, res) => {
         try {

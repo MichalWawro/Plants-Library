@@ -47,6 +47,21 @@ export default function FavouritePlantTemplate({ plant, userID, setIsWateringFor
                 plant: plant
             })
         })
+        .catch(error => console.error(error));
+    }
+
+    const handleWateringEvent = () => {
+        if (["wateringFrequency"] in plant) {
+            //setTimeToWater(Object.assign(timeToWater, { isLate: false, days: plant.wateringFrequency }));
+            fetch("http://localhost:5000/api/plant/watering/new", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({userID, plantId: plant.id})
+            })
+                .catch(error => console.error(error));
+        } else {
+            setIsWateringForm(true);
+        }
     }
 
     return (
@@ -57,19 +72,20 @@ export default function FavouritePlantTemplate({ plant, userID, setIsWateringFor
             </div>
             <h2>{plant.common_name}</h2>
             <div className="manage-bar flex-row-center-center">
-                <img className="manage-icons watering-icon" src={wateringCan} alt="watering can"
-                    onClick={() => {
-                        setIsWateringForm(true);
-                        setEditedPlant(plant)
-                    }} />
-                                    <div className="timer flex-row-center-center">
+                <img className="manage-icons watering-icon" src={wateringCan} alt="watering can" onClick={handleWateringEvent} />
+                <div className="timer flex-row-center-center" onClick={() => {
+                    setIsWateringForm(true);
+                    setEditedPlant(plant)
+                }} >
                     {
                         ["wateringFrequency"] in plant &&
-                        timeToWater &&
-                        <>
-                            <img className="watered-icon" src={timeToWater.isLate ? notWateredPlant : wateredPlant} alt="watered" />
-                            <p className={timeToWater.isLate ? "late" : "notlate"}>{timeToWater.days}d {timeToWater.hours}h</p>
-                        </>
+                            timeToWater
+                            ?
+                            <>
+                                <img className="watered-icon" src={timeToWater.isLate ? notWateredPlant : wateredPlant} alt="watered" />
+                                <p className={timeToWater.isLate ? "late" : "notlate"}>{timeToWater.days}d {timeToWater.hours}h</p>
+                            </>
+                            : <p>Add timer</p>
                     }
                 </div>
                 {
