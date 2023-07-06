@@ -11,27 +11,27 @@ function Navbar(props) {
     const handleSignOut = () => {
         setProfileDetails({});
         setIsUserLogedIn(false);
+        //setIsSignOut(true);
     }
 
     return (
         <>
-            {isSignOut
-                ? <Navigate replace to={PAGES.HOME} />
-                : <div className='navbar-div flex-row-center-center'>
-                    {isUserLogedIn
-                        ?
-                        <>
-                            <Link to={PAGES.MYPLANTS}><button type='button'>My Plants</button></Link>
-                            <Link to={PAGES.SEARCH}><button type='button'>Search</button></Link>
-                            <button className="sign-out-button" type='button' onClick={handleSignOut}>Sign out</button>
-                        </>
-                        :
-                        <>
-                            <Link to={PAGES.HOME}><button type='button'>Home</button></Link>
-                            <Link to={PAGES.REGISTER}><button type='button'>Sign In/Register</button></Link>
-                        </>
-                    }
-                </div>}
+            <div className='navbar-div flex-row-center-center'>
+                {isUserLogedIn
+                    ?
+                    <>
+                        <Link to={PAGES.MYPLANTS}><button type='button'>My Plants</button></Link>
+                        <Link to={PAGES.SEARCH}><button type='button'>Search</button></Link>
+                        <button className="sign-out-button" type='button' onClick={handleSignOut}>Sign out</button>
+                    </>
+                    :
+                    <>
+                        <Navigate replace to={PAGES.HOME} />
+                        <Link to={PAGES.HOME}><button type='button'>Home</button></Link>
+                        <Link to={PAGES.REGISTER}><button type='button'>Sign In/Register</button></Link>
+                    </>
+                }
+            </div>
         </>
     )
 }

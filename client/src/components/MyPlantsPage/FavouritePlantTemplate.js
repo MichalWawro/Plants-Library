@@ -75,7 +75,7 @@ export default function FavouritePlantTemplate(props) {
                 <img className="fav-main-plant" src={plant.default_image.thumbnail} alt="plant" />
 
             </div>
-            <h2>{plant.common_name}</h2>
+            <h2>{plant.common_name.toUpperCase()}</h2>
             <div className="manage-bar flex-row-center-center">
                 <img className="manage-icons watering-icon" src={wateringCan} alt="watering can" onClick={handleWateringEvent} />
                 <div className="timer flex-row-center-center" onClick={() => {
