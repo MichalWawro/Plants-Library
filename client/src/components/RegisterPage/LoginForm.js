@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
+import PAGES from "../../constants/enums";
+
 function LoginForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }) {
     const [loginData, setLoginData] = useState({
         username: "",
@@ -40,7 +42,7 @@ function LoginForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }) {
     return (
         <>
             {isAuthenticated
-                ? <Navigate replace to="/home" />
+                ? <Navigate replace to={PAGES.MYPLANTS} />
                 : <form className='flex-column-center-center' onSubmit={handleSubmit}>
                     <h1>Log In</h1>
                     <div className='form-div-container flex-column-center-center'>

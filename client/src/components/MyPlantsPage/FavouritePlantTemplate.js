@@ -6,7 +6,8 @@ import grayStar from "../../assets/gray_star.png";
 import wateredPlant from "../../assets/watered_plant.png";
 import notWateredPlant from "../../assets/plant_notwatered.png"
 
-export default function FavouritePlantTemplate({ plant, userID, setIsWateringForm, setEditedPlant }) {
+export default function FavouritePlantTemplate(props) {
+    const { plant, userID, setIsWateringForm, setEditedPlant, updateProfile } = props;
     const [isFavourite, setIsFavourite] = useState(true);
     const [timeToWater, setTimeToWater] = useState({});
 
@@ -47,18 +48,18 @@ export default function FavouritePlantTemplate({ plant, userID, setIsWateringFor
                 plant: plant
             })
         })
-        .catch(error => console.error(error));
+            .catch(error => console.error(error));
     }
 
-    const handleWateringEvent = () => {
+    const handleWateringEvent = async () => {
         if (["wateringFrequency"] in plant) {
-            //setTimeToWater(Object.assign(timeToWater, { isLate: false, days: plant.wateringFrequency }));
-            fetch("http://localhost:5000/api/plant/watering/new", {
+            setTimeToWater(Object.assign(timeToWater, { isLate: false, days: plant.wateringFrequency - 1, hours: 23 }));
+            await fetch("http://localhost:5000/api/plant/watering/new", {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({userID, plantId: plant.id})
+                body: JSON.stringify({ userID, plantId: plant.id })
             })
-                .catch(error => console.error(error));
+            await updateProfile();
         } else {
             setIsWateringForm(true);
         }

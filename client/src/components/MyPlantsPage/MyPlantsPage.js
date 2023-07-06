@@ -9,6 +9,10 @@ function MyPlantsPage({ profileDetails, setProfileDetails }) {
     const [editedPlant, setEditedPlant] = useState({});
 
     useEffect(() => {
+        updateProfile();
+    }, [])
+
+    const updateProfile = () => {
         fetch("http://localhost:5000/api/profile", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -17,7 +21,8 @@ function MyPlantsPage({ profileDetails, setProfileDetails }) {
             .then(response => response.json())
             .then(data => setProfileDetails(data))
             .catch(error => console.error(error));
-    }, [])
+
+    }
 
     return (
         <>
@@ -35,7 +40,8 @@ function MyPlantsPage({ profileDetails, setProfileDetails }) {
                         plant={element}
                         userID={profileDetails[0].userId}
                         setIsWateringForm={setIsWateringForm}
-                        setEditedPlant={setEditedPlant} />
+                        setEditedPlant={setEditedPlant}
+                        updateProfile={updateProfile} />
                 )}
             </div>
         </>

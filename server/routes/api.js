@@ -64,10 +64,10 @@ router.route("/plant")
         } catch (error) {
             res.status(400).json("Something went wrong...");
         }
-    })    
+    })
     .delete(async (req, res) => {
         try {
-            const {plant, userID} = req.body;
+            const { plant, userID } = req.body;
             const profile = await Profile.find({ userId: userID });
             const indexID = profile[0].plantsIds.findIndex(element => element === plant.id);
             const indexObject = profile[0].plants.findIndex(element => element.id === plant.id);
@@ -81,35 +81,35 @@ router.route("/plant")
     })
 
 router.route("/plant/watering")
-.patch(async (req,res) =>{
-    try {
-        const {userId, editedPlant, wateringFrequency} = req.body;
-        const profile = await Profile.find({userId});
-        const plantIndex = profile[0].plants.findIndex(element => element.id === editedPlant.id);
-        profile[0].plants[plantIndex].wateringFrequency = wateringFrequency;
-        profile[0].plants[plantIndex].lastWatering = Date.now();
-        profile[0].markModified("plants");
-        await profile[0].save();
-        res.status(200).json("Updated");
-    } catch (error) {
-        res.status(400).json("Something went wrong...");
-    }
-})
+    .patch(async (req, res) => {
+        try {
+            const { userId, editedPlant, wateringFrequency } = req.body;
+            const profile = await Profile.find({ userId });
+            const plantIndex = profile[0].plants.findIndex(element => element.id === editedPlant.id);
+            profile[0].plants[plantIndex].wateringFrequency = wateringFrequency;
+            profile[0].plants[plantIndex].lastWatering = Date.now();
+            profile[0].markModified("plants");
+            await profile[0].save();
+            res.status(200).send(profile);
+        } catch (error) {
+            res.status(400).json("Something went wrong...");
+        }
+    })
 
 router.route("/plant/watering/new")
-.patch(async (req,res) =>{
-    try {
-        const {userID, plantId} = req.body;
-        const profile = await Profile.find({userId: userID});
-        const plantIndex = profile[0].plants.findIndex(element => element.id === plantId);
-        profile[0].plants[plantIndex].lastWatering = Date.now();
-        profile[0].markModified("plants");
-        await profile[0].save();
-        res.status(200).json("Updated");
-    } catch (error) {
-        res.status(400).json("Something went wrong...");
-    }
-})
+    .patch(async (req, res) => {
+        try {
+            const { userID, plantId } = req.body;
+            const profile = await Profile.find({ userId: userID });
+            const plantIndex = profile[0].plants.findIndex(element => element.id === plantId);
+            profile[0].plants[plantIndex].lastWatering = Date.now();
+            profile[0].markModified("plants");
+            await profile[0].save();
+            res.status(200).json("Updated");
+        } catch (error) {
+            res.status(400).json("Something went wrong...");
+        }
+    })
 
 router.route("/profile")
     .post(async (req, res) => {
