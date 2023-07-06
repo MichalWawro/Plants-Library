@@ -37,6 +37,10 @@
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.432);
 }
 
+.button-addToMyPlants:active, .button-learn_more:active{
+    background-color: rgba(13, 107, 29, 0.644);
+}
+
 @media only screen and (max-width: 767px) {
     .plant-small {
         font-size: 15px;

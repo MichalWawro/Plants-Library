@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
+import PAGES from '../../constants/enums.js';
+
 function RegisterForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }) {
     const [registerForm, setRegisterForm] = useState({});
     const [redirect, setRedirect] = useState(false);
@@ -77,7 +79,7 @@ function RegisterForm({ setIsRegisterForm, setIsUserLogedIn, setProfileDetails }
     return (
         <>
             {redirect
-                ? <Navigate replace to={"/home"} />
+                ? <Navigate replace to={PAGES.MYPLANTS} />
                 : <form className='register-form flex-column-center-center' onSubmit={handleSubmit}>
                     <h1>Create new account</h1>
                     {
