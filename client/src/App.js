@@ -15,8 +15,8 @@ import Navbar from './components/NavBar/NavBar';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PlantPage from './components/PlantPage/PlantPage';
 import SearchPage from './components/SearchPage/SearchPage';
-import HomePage from './components/HomePage/HomePage';
 import MyPlantsPage from './components/MyPlantsPage/MyPlantsPage';
+import HomePageLoggedOut from './components/HomePage/HomePageLoggedOut';
 
 
 function App() {
@@ -40,12 +40,7 @@ function App() {
             </main>
           </>
         }>
-          <Route path={PAGES.HOME} element={
-            <HomePage
-              isUserLogedIn={isUserLogedIn}
-              profileDetails={profileDetails}
-            />} />
-
+          <Route index element={<HomePageLoggedOut />}/>
           {isUserLogedIn &&
             <>
               <Route path={PAGES.SEARCH} element={
@@ -56,10 +51,9 @@ function App() {
                   setProfileDetails={setProfileDetails}
                   profileDetails={profileDetails} />}
               />
-              <Route path={PAGES.PROFILE} element={<h2>Test4</h2>} />
-              <Route path={PAGES.PLANT} element={<PlantPage userId={profileDetails[0].userId}/>} />
+              <Route path={PAGES.PLANT} element={<PlantPage userId={profileDetails[0].userId} />} />
             </>
-            
+
           }
           <Route path={PAGES.REGISTER}
             element={

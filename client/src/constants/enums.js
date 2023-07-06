@@ -1,5 +1,5 @@
 const PAGES = {
-    HOME: "/home",
+    HOME: "/",
     MYPLANTS: "/myplants",
     SEARCH: "/search",
     PROFILE: "/profile",
