@@ -10,7 +10,6 @@ import sun from "../../assets/sun.jpg";
 function PlantPage({ userId }) {
     const { id } = useParams();
     const [plant, setPlant] = useState();
-    console.log(plant);
     useEffect(() => {
         fetch(`https://perenual.com/api/species/details/${id}?key=${PERENUAL_API_KEY}`)
             .then(response => response.json())

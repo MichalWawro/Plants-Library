@@ -4,6 +4,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	align-content: center;
+	justify-content: space-around;
 }
 
 .search-input {
@@ -15,11 +16,7 @@
 	border-radius: 10px;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.411);
 	border: 3px solid black;
-}
-
-.flex-column-center-center {
-	padding: 20px !important;
-	justify-content: flex-start !important
+	margin-top: 20px;
 }
 
 .plant-card {
