@@ -1,6 +1,7 @@
 import { useState } from "react"
 
-export default function WateringForm({setIsWateringForm, editedPlant, setEditedPlant, userId}){
+export default function WateringForm(props){
+    const {setIsWateringForm, editedPlant, setEditedPlant, userId} = props;
     const [wateringFrequency, setWateringFrequency] = useState();
 
     const handleWateringSubmit = (event) => {
