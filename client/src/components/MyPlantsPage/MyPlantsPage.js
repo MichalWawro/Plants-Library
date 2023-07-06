@@ -21,7 +21,6 @@ function MyPlantsPage({ profileDetails, setProfileDetails }) {
             .then(response => response.json())
             .then(data => setProfileDetails(data))
             .catch(error => console.error(error));
-
     }
 
     return (
@@ -30,7 +29,8 @@ function MyPlantsPage({ profileDetails, setProfileDetails }) {
                 setIsWateringForm={setIsWateringForm}
                 userId={profileDetails[0].userId}
                 editedPlant={editedPlant}
-                setEditedPlant={setEditedPlant} />}
+                setEditedPlant={setEditedPlant}
+                updateProfile={updateProfile} />}
             <p className="fav-plants-header">My Plants</p>
             <div className="fav-container flex-row-center-center">
 

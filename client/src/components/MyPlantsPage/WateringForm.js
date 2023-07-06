@@ -1,37 +1,39 @@
 import { useState } from "react"
 
-export default function WateringForm(props){
-    const {setIsWateringForm, editedPlant, setEditedPlant, userId} = props;
+export default function WateringForm(props) {
+    const { setIsWateringForm, editedPlant, setEditedPlant, userId, updateProfile } = props;
     const [wateringFrequency, setWateringFrequency] = useState();
 
-    const handleWateringSubmit = (event) => {
+    const handleWateringSubmit = async (event) => {
         event.preventDefault();
-        fetch("http://localhost:5000/api/plant/watering", {
-            method: "PATCH",
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify({userId, editedPlant, wateringFrequency})
-        })
-        .then(() => {
+        try {
+            await fetch("http://localhost:5000/api/plant/watering", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId, editedPlant, wateringFrequency })
+            })
+            await updateProfile();
             setEditedPlant({});
-        })
-        .catch(error => console.error(error));
-        event.target.reset();
-        setIsWateringForm(false);
+            setIsWateringForm(false);
+            event.target.reset();
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    return(
+    return (
         <div className="watering-div flex-column-center-center">
             <form className="watering-form flex-column-center-center" onSubmit={handleWateringSubmit}>
                 <h2>Set watering reminder</h2>
-                <select 
-                className="watering-select" 
-                name="howOften"
-                 id="howOften"
-                  defaultValue={0}
-                  onChange={(event => setWateringFrequency(event.target.value))}>
+                <select
+                    className="watering-select"
+                    name="howOften"
+                    id="howOften"
+                    defaultValue={0}
+                    onChange={(event => setWateringFrequency(event.target.value))}>
                     <option value={0}>Don't remind me</option>
                     {
-                        Array.from(Array(30).keys()).map(element => 
+                        Array.from(Array(30).keys()).map(element =>
                             <option key={"day" + element} value={element + 1}>{element + 1} days</option>)
                     }
                 </select>

@@ -25,7 +25,7 @@ export default function FavouritePlantTemplate(props) {
                 setTimeToWater(Object.assign(timeToWater, { isLate: false }));
             }
         }
-    })
+    }, [])
 
     const handleRemoveFav = () => {
         setIsFavourite(false);
@@ -52,16 +52,20 @@ export default function FavouritePlantTemplate(props) {
     }
 
     const handleWateringEvent = async () => {
-        if (["wateringFrequency"] in plant) {
-            setTimeToWater(Object.assign(timeToWater, { isLate: false, days: plant.wateringFrequency - 1, hours: 23 }));
-            await fetch("http://localhost:5000/api/plant/watering/new", {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ userID, plantId: plant.id })
-            })
-            await updateProfile();
-        } else {
-            setIsWateringForm(true);
+        try {
+            if (["wateringFrequency"] in plant) {
+                setTimeToWater(Object.assign(timeToWater, { isLate: false, days: plant.wateringFrequency - 1, hours: 23 }));
+                await fetch("http://localhost:5000/api/plant/watering/new", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ userID, plantId: plant.id })
+                })
+                await updateProfile();
+            } else {
+                setIsWateringForm(true);
+            }
+        } catch (error) {
+            console.error(error)
         }
     }
 
